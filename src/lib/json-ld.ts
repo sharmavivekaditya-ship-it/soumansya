@@ -1,5 +1,5 @@
 import type { ParsedLocation, ParsedService, ParsedTeamMember } from "@/lib/data";
-import { faqEntries, siteConfig } from "@/lib/site";
+import { faqEntries, siteConfig, siteUrl } from "@/lib/site";
 
 export function buildClinicJsonLd({
   locations,
@@ -14,7 +14,7 @@ export function buildClinicJsonLd({
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
     name: siteConfig.legalName,
-    url: siteConfig.domain,
+    url: siteUrl,
     telephone: siteConfig.phoneDisplay,
     email: siteConfig.email,
     medicalSpecialty: "Psychiatry",
@@ -76,7 +76,7 @@ export function buildServiceJsonLd(service: ParsedService) {
     "@type": "MedicalTherapy",
     name: service.title,
     description: service.summary,
-    url: `${siteConfig.domain}/services/${service.slug}`,
+    url: `${siteUrl}/services/${service.slug}`,
     areaServed: "Navi Mumbai",
     provider: {
       "@type": "MedicalClinic",

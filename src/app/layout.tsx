@@ -3,11 +3,11 @@ import { QuickLeadWidget } from "@/components/quick-lead-widget";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getLocations, getServices } from "@/lib/data";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.domain),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${siteConfig.name} | Psychiatrist in Navi Mumbai`,
     template: `%s | ${siteConfig.name}`,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} | Psychiatrist in Navi Mumbai`,
     description:
       "Adult psychiatry, child mental health, psychometric testing, group therapy, home visits, and counselling in Navi Mumbai.",
-    url: siteConfig.domain,
+    url: siteUrl,
     siteName: siteConfig.name,
     locale: "en_IN",
     type: "website",

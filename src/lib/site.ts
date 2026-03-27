@@ -15,6 +15,23 @@ export const siteConfig = {
     "Consultant-led psychiatry, psychology, psychometric testing, child guidance, deaddiction support, home visits, and structured follow-up from clinics in Vashi and Ulwe.",
 };
 
+function normalizeSiteUrl(url: string) {
+  const trimmed = url.trim().replace(/\/+$/, "");
+
+  if (!trimmed) {
+    return "";
+  }
+
+  return trimmed.startsWith("http") ? trimmed : `https://${trimmed}`;
+}
+
+export const siteUrl =
+  normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL || "") ||
+  normalizeSiteUrl(process.env.SITE_URL || "") ||
+  normalizeSiteUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL || "") ||
+  normalizeSiteUrl(process.env.VERCEL_URL || "") ||
+  siteConfig.domain;
+
 export const navigation = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
