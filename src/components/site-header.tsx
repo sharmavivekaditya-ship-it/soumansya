@@ -22,7 +22,7 @@ export function SiteHeader() {
                 <p className="text-sm uppercase tracking-[0.24em] text-[var(--muted)]">
                   Navi Mumbai Psychiatry
                 </p>
-                <p className="truncate font-display text-2xl leading-none text-[var(--foreground)]">
+                <p className="font-display text-2xl leading-none text-[var(--foreground)]">
                   Soumanasya Clinic
                 </p>
               </div>
@@ -35,7 +35,7 @@ export function SiteHeader() {
               >
                 Call clinic
               </a>
-              <Link href="/contact" className="btn-primary text-sm">
+              <Link href="/contact" className="btn-primary hidden text-sm sm:inline-flex">
                 Book now
               </Link>
             </div>
@@ -57,6 +57,9 @@ export function SiteHeader() {
             >
               Call
             </a>
+            <Link href="/contact" className="header-nav__item sm:hidden">
+              Book
+            </Link>
           </nav>
         </div>
       </div>
