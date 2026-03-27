@@ -148,21 +148,21 @@ export function LeadForm({
   }
 
   return (
-    <div className={`section-card relative overflow-hidden ${compact ? "p-6" : "p-7 sm:p-8"}`}>
+    <div className={`section-card relative overflow-hidden ${compact ? "p-5 sm:p-6" : "p-6 sm:p-8"}`}>
       <div className="pointer-events-none absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[rgba(28,139,128,0.12)] blur-2xl" />
       <div className="pointer-events-none absolute bottom-[-2rem] left-[-1rem] h-24 w-24 rounded-full bg-[rgba(216,127,88,0.12)] blur-2xl" />
-      <div className="relative mb-6 space-y-3">
+      <div className={`relative ${compact ? "mb-5 space-y-2" : "mb-6 space-y-3"}`}>
         <p className="eyebrow">Lead capture</p>
-        <h3 className="font-display text-3xl leading-none text-[var(--foreground)]">
+        <h3 className={`font-display leading-none text-[var(--foreground)] ${compact ? "text-[2rem]" : "text-3xl"}`}>
           {title}
         </h3>
-        <p className="max-w-2xl text-sm leading-7 text-[var(--muted)]">
+        <p className={`max-w-2xl text-sm text-[var(--muted)] ${compact ? "leading-6" : "leading-7"}`}>
           {subtitle}
         </p>
         <div className="flex flex-wrap gap-2 pt-1">
           <span className="lead-pill">{lockedService || "Private enquiry"}</span>
-          <span className="lead-pill">Preferred callback</span>
-          <span className="lead-pill">Branch routing</span>
+          <span className="lead-pill">{compact ? "Fast callback" : "Preferred callback"}</span>
+          {!compact ? <span className="lead-pill">Branch routing</span> : null}
         </div>
       </div>
 
@@ -171,7 +171,7 @@ export function LeadForm({
         ref={formRef}
         action={formAction}
         onInputCapture={handleInputCapture}
-        className="grid gap-4 md:grid-cols-2"
+        className={`grid gap-4 ${compact ? "sm:grid-cols-2" : "md:grid-cols-2"}`}
       >
         <input type="hidden" name="sourcePage" defaultValue={sourcePage} />
         <input type="hidden" name="referrer" defaultValue="" />
@@ -203,18 +203,6 @@ export function LeadForm({
         </label>
 
         <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
-          Inquiry type
-          <select name="inquiryType" defaultValue="">
-            <option value="">Select inquiry type</option>
-            <option value="First consultation">First consultation</option>
-            <option value="Second opinion">Second opinion</option>
-            <option value="Child assessment">Child assessment</option>
-            <option value="Therapy support">Therapy support</option>
-            <option value="Home visit request">Home visit request</option>
-          </select>
-        </label>
-
-        <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
           Urgency
           <select name="urgency" defaultValue="">
             <option value="">Select urgency</option>
@@ -237,21 +225,6 @@ export function LeadForm({
         </label>
 
         <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
-          Preferred time
-          <select name="preferredTime" defaultValue="">
-            <option value="">Select a preferred time</option>
-            <option value="Afternoon, 1 PM to 4 PM">Afternoon, 1 PM to 4 PM</option>
-            <option value="Evening, 7 PM to 9 PM">Evening, 7 PM to 9 PM</option>
-            <option value="Any available slot">Any available slot</option>
-          </select>
-        </label>
-
-        <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
-          Email address
-          <input name="email" type="email" placeholder="you@example.com" />
-        </label>
-
-        <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
           Preferred location
           <select name="locationPreference" defaultValue="">
             <option value="">Any clinic location</option>
@@ -263,23 +236,54 @@ export function LeadForm({
           </select>
         </label>
 
-        <label className="space-y-2 text-sm font-medium text-[var(--foreground)] md:col-span-2">
+        {!compact ? (
+          <>
+            <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
+              Inquiry type
+              <select name="inquiryType" defaultValue="">
+                <option value="">Select inquiry type</option>
+                <option value="First consultation">First consultation</option>
+                <option value="Second opinion">Second opinion</option>
+                <option value="Child assessment">Child assessment</option>
+                <option value="Therapy support">Therapy support</option>
+                <option value="Home visit request">Home visit request</option>
+              </select>
+            </label>
+
+            <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
+              Preferred time
+              <select name="preferredTime" defaultValue="">
+                <option value="">Select a preferred time</option>
+                <option value="Afternoon, 1 PM to 4 PM">Afternoon, 1 PM to 4 PM</option>
+                <option value="Evening, 7 PM to 9 PM">Evening, 7 PM to 9 PM</option>
+                <option value="Any available slot">Any available slot</option>
+              </select>
+            </label>
+
+            <label className="space-y-2 text-sm font-medium text-[var(--foreground)]">
+              Email address
+              <input name="email" type="email" placeholder="you@example.com" />
+            </label>
+          </>
+        ) : null}
+
+        <label className={`space-y-2 text-sm font-medium text-[var(--foreground)] ${compact ? "sm:col-span-2" : "md:col-span-2"}`}>
           Message
           <textarea
             name="message"
-            rows={compact ? 4 : 5}
+            rows={compact ? 3 : 5}
             placeholder="Tell the clinic what support you need."
           />
         </label>
 
-        <label className="lead-consent md:col-span-2">
+        <label className={`lead-consent ${compact ? "sm:col-span-2" : "md:col-span-2"}`}>
           <input name="consentToContact" type="checkbox" />
           <span>
             I want the clinic to contact me back on my preferred channel.
           </span>
         </label>
 
-        <div className="lead-status md:col-span-2">
+        <div className={`lead-status ${compact ? "sm:col-span-2" : "md:col-span-2"}`}>
           <div className={`text-sm ${state.status === "error" ? "text-[#a64630]" : "text-[var(--muted)]"}`}>
             {lockedService
               ? `This enquiry will be tagged under ${lockedService}.`
@@ -289,7 +293,7 @@ export function LeadForm({
         </div>
 
         {state.message ? (
-          <div className="lead-feedback md:col-span-2">
+          <div className={`lead-feedback ${compact ? "sm:col-span-2" : "md:col-span-2"}`}>
             <p
               className={`text-sm ${
                 state.status === "success" ? "text-[#1b6b63]" : "text-[#a64630]"

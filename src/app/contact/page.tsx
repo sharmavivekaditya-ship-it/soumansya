@@ -13,14 +13,14 @@ export default async function ContactPage() {
   const [locations, services] = await Promise.all([getLocations(), getServices()]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-18">
+    <main className="page-shell mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-18">
       <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-5">
           <p className="eyebrow">Appointments</p>
-          <h1 className="font-display text-6xl leading-[0.94] tracking-[-0.03em] text-[var(--foreground)]">
+          <h1 className="page-title">
             Private access to the clinic, without confusion or friction.
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          <p className="body-lead max-w-2xl">
             Call directly, send an email, message on WhatsApp, or request a
             callback through the enquiry form for the right branch and service.
           </p>
@@ -46,7 +46,7 @@ export default async function ContactPage() {
               WhatsApp
             </a>
           </div>
-          <div className="rounded-[1.7rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(18,53,50,0.94),rgba(18,53,50,0.82))] p-6 text-[var(--background)] shadow-[0_22px_50px_rgba(18,53,50,0.16)]">
+          <div className="rounded-[1.7rem] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(18,53,50,0.94),rgba(18,53,50,0.82))] p-5 text-[var(--background)] shadow-[0_22px_50px_rgba(18,53,50,0.16)] sm:p-6">
             <p className="text-xs uppercase tracking-[0.2em] text-[rgba(247,241,231,0.7)]">
               What to expect
             </p>
@@ -91,11 +91,11 @@ export default async function ContactPage() {
 
       <section className="mt-10 grid gap-6 lg:grid-cols-2">
         {locations.map((location) => (
-          <div key={location.slug} className="section-card p-7 sm:p-8">
-            <div className="flex items-center justify-between gap-4">
+          <div key={location.slug} className="section-card p-5 sm:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p className="eyebrow">Clinic location</p>
-                <h2 className="mt-3 font-display text-4xl leading-none text-[var(--foreground)]">
+                <h2 className="mt-3 font-display text-[2.15rem] leading-none text-[var(--foreground)] sm:text-4xl">
                   {location.name}
                 </h2>
               </div>

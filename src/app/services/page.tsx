@@ -22,13 +22,13 @@ export default async function ServicesPage() {
   );
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-18">
+    <main className="page-shell mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-18">
       <section className="space-y-5">
         <p className="eyebrow">Services</p>
-        <h1 className="font-display text-6xl leading-[0.94] tracking-[-0.03em] text-[var(--foreground)]">
+        <h1 className="page-title">
           A full-spectrum mental health practice, presented with clarity and confidence.
         </h1>
-        <p className="max-w-3xl text-lg leading-8 text-[var(--muted)]">
+        <p className="body-lead max-w-3xl">
           Each treatment area is described as its own support pathway, so
           patients and families can understand where they fit before the first
           appointment.
@@ -38,10 +38,10 @@ export default async function ServicesPage() {
       <section className="mt-10 space-y-10">
         {grouped.map(([category, categoryServices]) => (
           <div key={category} className="space-y-5">
-            <div className="flex items-end justify-between gap-4 rounded-[1.8rem] border border-[var(--line)] bg-white/60 px-6 py-5">
+            <div className="flex flex-wrap items-end justify-between gap-4 rounded-[1.8rem] border border-[var(--line)] bg-white/60 px-5 py-5 sm:px-6">
               <div>
                 <p className="eyebrow">Category</p>
-                <h2 className="mt-2 font-display text-4xl leading-none text-[var(--foreground)]">
+                <h2 className="mt-2 font-display text-[2.2rem] leading-none text-[var(--foreground)] sm:text-4xl">
                   {category}
                 </h2>
               </div>

@@ -13,14 +13,14 @@ export default async function AboutPage() {
   const [locations, team] = await Promise.all([getLocations(), getTeamMembers()]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-18">
+    <main className="page-shell mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-18">
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="space-y-5">
           <p className="eyebrow">About Soumanasya</p>
-          <h1 className="font-display text-6xl leading-[0.94] tracking-[-0.03em] text-[var(--foreground)]">
+          <h1 className="page-title">
             A modern psychiatry and psychology practice shaped around trust, continuity, and clinical depth.
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+          <p className="body-lead max-w-2xl">
             The clinic&apos;s published story positions Soumanasya as a
             neuropsychiatry-led centre founded in {siteConfig.foundedYear},
             designed to bring assessment, counselling, and psychiatric care into
@@ -28,7 +28,7 @@ export default async function AboutPage() {
           </p>
         </div>
 
-        <div className="section-card p-7 sm:p-8">
+        <div className="section-card p-5 sm:p-8">
           <div className="image-frame relative mb-6 aspect-[4/3] overflow-hidden">
             <Image
               src={clinicMedia.team["dr-chetan-vispute"]}
@@ -39,7 +39,7 @@ export default async function AboutPage() {
             />
           </div>
           <p className="eyebrow">Clinical direction</p>
-          <h2 className="mt-3 font-display text-4xl leading-none text-[var(--foreground)]">
+          <h2 className="mt-3 font-display text-[2.2rem] leading-none text-[var(--foreground)] sm:text-4xl">
             Dr. Chetan Vispute
           </h2>
           <p className="mt-2 text-sm uppercase tracking-[0.18em] text-[var(--muted)]">
@@ -81,7 +81,7 @@ export default async function AboutPage() {
             copy: "Vashi, Ulwe, and home-visit access help the practice stay both premium and practical for families across Navi Mumbai.",
           },
         ].map((item) => (
-          <div key={item.title} className="section-card p-6">
+          <div key={item.title} className="section-card p-5 sm:p-6">
             <p className="text-xl font-semibold text-[var(--foreground)]">
               {item.title}
             </p>
@@ -93,7 +93,7 @@ export default async function AboutPage() {
       </section>
 
       <section className="mt-10 grid gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="section-card p-7 sm:p-8">
+        <div className="section-card p-5 sm:p-8">
           <p className="eyebrow">Clinical voices</p>
           <div className="mt-5 space-y-5">
             {team.map((member) => (
@@ -120,7 +120,7 @@ export default async function AboutPage() {
           </div>
         </div>
 
-        <div className="section-card p-7 sm:p-8">
+        <div className="section-card p-5 sm:p-8">
           <p className="eyebrow">Clinic presence</p>
           <div className="mt-5 grid gap-5">
             {locations.map((location) => (

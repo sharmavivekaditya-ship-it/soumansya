@@ -9,16 +9,16 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="service-card group flex h-full flex-col gap-5 p-6 transition duration-300 hover:translate-y-[-6px]"
+      className="service-card group flex h-full flex-col gap-4 p-5 transition duration-300 hover:translate-y-[-6px] sm:gap-5 sm:p-6"
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-3">
           <p className="eyebrow">{service.eyebrow}</p>
           <h3 className="text-xl font-semibold text-[var(--foreground)]">
             {service.title}
           </h3>
         </div>
-        <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1 text-xs uppercase tracking-[0.2em] text-[var(--foreground)]">
+        <span className="rounded-full border border-white/40 bg-white/30 px-3 py-1 text-[0.68rem] uppercase tracking-[0.18em] text-[var(--foreground)] sm:text-xs sm:tracking-[0.2em]">
           {service.category}
         </span>
       </div>

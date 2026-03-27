@@ -16,6 +16,10 @@ export function QuickLeadWidget({
 }: QuickLeadWidgetProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const shouldRenderWidget =
+    pathname === "/about" ||
+    pathname === "/team" ||
+    pathname === "/services";
 
   const leadTitle = useMemo(() => {
     if (pathname.startsWith("/services/")) {
@@ -29,11 +33,15 @@ export function QuickLeadWidget({
     return "Talk to the clinic today";
   }, [pathname]);
 
+  if (!shouldRenderWidget) {
+    return null;
+  }
+
   return (
     <>
       <div className="lead-dock">
         <a href={`tel:${siteConfig.phoneRaw}`} className="btn-secondary">
-          Call
+          Call now
         </a>
         <a
           href={`https://wa.me/${siteConfig.phoneRaw.replace("+", "")}`}
@@ -44,7 +52,7 @@ export function QuickLeadWidget({
           WhatsApp
         </a>
         <button type="button" className="btn-primary" onClick={() => setOpen(true)}>
-          Quick enquiry
+          Enquire
         </button>
       </div>
 
@@ -58,10 +66,10 @@ export function QuickLeadWidget({
           <div className="mb-5 flex items-start justify-between gap-4">
             <div className="space-y-2">
               <p className="eyebrow">Quick capture</p>
-              <h2 className="font-display text-4xl leading-none text-[var(--foreground)]">
+              <h2 className="font-display text-[2.35rem] leading-none text-[var(--foreground)] sm:text-4xl">
                 {leadTitle}
               </h2>
-              <p className="text-sm leading-7 text-[var(--muted)]">
+              <p className="text-sm leading-6 text-[var(--muted)] sm:leading-7">
                 This site-wide drawer captures enquiry intent without forcing a
                 full page switch.
               </p>

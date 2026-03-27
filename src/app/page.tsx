@@ -34,11 +34,11 @@ export default async function Home() {
   ];
 
   return (
-    <main>
+    <main className="page-shell">
       <JsonLd data={buildClinicJsonLd({ locations, services, team })} />
       <JsonLd data={buildFaqJsonLd()} />
 
-      <section className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
+      <section className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-10 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-20">
         <div className="relative space-y-8">
           <div className="flex flex-wrap gap-3 reveal">
             <span className="hero-badge">Established {siteConfig.foundedYear}</span>
@@ -48,15 +48,15 @@ export default async function Home() {
 
           <div className="space-y-6 reveal delay-1">
             <p className="eyebrow">{siteConfig.primaryKeyword}</p>
-            <h1 className="max-w-4xl font-display text-6xl leading-[0.92] tracking-[-0.03em] text-[var(--foreground)] sm:text-7xl">
+            <h1 className="page-title max-w-4xl leading-[0.92]">
               {siteConfig.heroTitle}
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            <p className="body-lead max-w-2xl">
               {siteConfig.heroCopy}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4 reveal delay-2">
+          <div className="flex flex-wrap gap-3 sm:gap-4 reveal delay-2">
             <Link
               href="/contact"
               className="btn-primary"
@@ -70,19 +70,19 @@ export default async function Home() {
 
           <div className="grid gap-4 text-sm text-[var(--foreground)] sm:grid-cols-3 reveal delay-3">
             <div className="section-card p-5">
-              <p className="text-4xl font-display">{yearsActive}+</p>
+              <p className="text-3xl font-display sm:text-4xl">{yearsActive}+</p>
               <p className="mt-2 leading-6 text-[var(--muted)]">
                 years of clinic presence since 2014
               </p>
             </div>
             <div className="section-card p-5">
-              <p className="text-4xl font-display">{services.length}</p>
+              <p className="text-3xl font-display sm:text-4xl">{services.length}</p>
               <p className="mt-2 leading-6 text-[var(--muted)]">
                 service lines modelled in the database
               </p>
             </div>
             <div className="section-card p-5">
-              <p className="text-4xl font-display">{locations.length}</p>
+              <p className="text-3xl font-display sm:text-4xl">{locations.length}</p>
               <p className="mt-2 leading-6 text-[var(--muted)]">
                 clinic locations across Vashi and Ulwe
               </p>
@@ -90,12 +90,12 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="section-card relative overflow-hidden p-7 sm:p-8">
+        <div className="section-card relative overflow-hidden p-5 sm:p-8">
           <div className="hero-orb right-[-3rem] top-[-3rem] h-32 w-32 bg-[rgba(28,139,128,0.22)]" />
           <div className="hero-orb left-[15%] top-[28%] h-20 w-20 bg-[rgba(216,127,88,0.18)]" />
           <div className="hero-orb bottom-[-2rem] right-[20%] h-28 w-28 bg-[rgba(18,53,50,0.14)]" />
           <div className="relative space-y-6">
-            <div className="image-frame relative aspect-[4/4.5] overflow-hidden">
+            <div className="image-frame relative aspect-[4/4.65] overflow-hidden sm:aspect-[4/4.5]">
               <Image
                 src={clinicMedia.team["dr-chetan-vispute"]}
                 alt="Dr. Chetan Vispute"
@@ -104,7 +104,7 @@ export default async function Home() {
                 sizes="(max-width: 1024px) 100vw, 36vw"
                 priority
               />
-              <div className="absolute inset-x-4 bottom-4 rounded-[1.4rem] border border-white/30 bg-[rgba(18,53,50,0.78)] p-4 text-[var(--background)] backdrop-blur-md">
+              <div className="absolute inset-x-3 bottom-3 rounded-[1.25rem] border border-white/30 bg-[rgba(18,53,50,0.78)] p-3 text-[var(--background)] backdrop-blur-md sm:inset-x-4 sm:bottom-4 sm:rounded-[1.4rem] sm:p-4">
                 <p className="text-xs uppercase tracking-[0.18em] text-[rgba(247,241,231,0.7)]">
                   Clinical lead
                 </p>
@@ -116,7 +116,7 @@ export default async function Home() {
             </div>
             <div>
               <p className="eyebrow">Local access</p>
-              <h2 className="mt-3 font-display text-4xl leading-none text-[var(--foreground)]">
+              <h2 className="section-title mt-3 max-w-lg">
                 Care that feels private, personal, and easy to return to.
               </h2>
             </div>
@@ -132,7 +132,7 @@ export default async function Home() {
                   key={location.slug}
                   className="rounded-[1.4rem] border border-[var(--line)] bg-white/70 p-5"
                 >
-                  <div className="flex items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
                       <p className="text-lg font-semibold text-[var(--foreground)]">
                         {location.name}
@@ -160,12 +160,12 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <div className="section-card p-7 sm:p-8">
+      <section className="mx-auto w-full max-w-7xl px-5 py-4 sm:px-6 lg:px-8 lg:py-10">
+        <div className="section-card p-5 sm:p-8">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-4">
               <p className="eyebrow">Why families choose Soumanasya</p>
-              <h2 className="font-display text-5xl leading-none text-[var(--foreground)]">
+              <h2 className="section-title">
                 A serious clinic should feel steady, warm, and quietly authoritative.
               </h2>
             </div>
@@ -203,11 +203,11 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-6 lg:px-8 lg:py-14">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="space-y-3">
             <p className="eyebrow">Signature care programs</p>
-            <h2 className="font-display text-5xl leading-none text-[var(--foreground)]">
+            <h2 className="section-title">
               Focused support for the concerns people trust a serious clinic to handle.
             </h2>
           </div>
@@ -223,15 +223,15 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-6 lg:px-8 lg:py-14">
         <div className="mb-8 space-y-3">
           <p className="eyebrow">Inside the care philosophy</p>
-          <h2 className="font-display text-5xl leading-none text-[var(--foreground)]">
+          <h2 className="section-title">
             A practice that feels warm, contemporary, and clinically grounded at once.
           </h2>
         </div>
         <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="image-frame relative min-h-[420px]">
+          <div className="image-frame relative min-h-[280px] sm:min-h-[420px]">
             <Image
               src={clinicMedia.gallery[0].src}
               alt={clinicMedia.gallery[0].alt}
@@ -239,7 +239,7 @@ export default async function Home() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 60vw"
             />
-            <div className="absolute inset-x-5 bottom-5 rounded-[1.4rem] border border-white/30 bg-[rgba(18,53,50,0.78)] p-5 text-[var(--background)] backdrop-blur-md">
+            <div className="absolute inset-x-3 bottom-3 rounded-[1.2rem] border border-white/30 bg-[rgba(18,53,50,0.78)] p-4 text-[var(--background)] backdrop-blur-md sm:inset-x-5 sm:bottom-5 sm:rounded-[1.4rem] sm:p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-[rgba(247,241,231,0.72)]">
                 {clinicMedia.gallery[0].title}
               </p>
@@ -249,7 +249,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="grid gap-5">
-            <div className="image-frame relative min-h-[200px]">
+            <div className="image-frame relative min-h-[180px] sm:min-h-[200px]">
               <Image
                 src={clinicMedia.gallery[1].src}
                 alt={clinicMedia.gallery[1].alt}
@@ -260,7 +260,7 @@ export default async function Home() {
             </div>
             <div className="grid gap-5 sm:grid-cols-2">
               {team.slice(1).map((member) => (
-                <div key={member.slug} className="image-frame relative min-h-[220px]">
+                <div key={member.slug} className="image-frame relative min-h-[180px] sm:min-h-[220px]">
                   <Image
                     src={clinicMedia.team[member.slug as keyof typeof clinicMedia.team]}
                     alt={member.name}
@@ -281,10 +281,10 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-7xl gap-6 px-5 py-10 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-14">
-        <div className="ink-panel p-7 sm:p-8">
+      <section className="mx-auto grid w-full max-w-7xl gap-6 px-5 py-8 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-14">
+        <div className="ink-panel p-5 sm:p-8">
           <p className="eyebrow">Conditions supported</p>
-          <h2 className="mt-3 font-display text-5xl leading-none text-[var(--background)]">
+          <h2 className="mt-3 font-display text-[2.2rem] leading-[0.96] text-[var(--background)] sm:text-5xl">
             The emotional and behavioural concerns patients most often want help for.
           </h2>
           <p className="mt-4 text-sm leading-7 text-[rgba(247,241,231,0.76)]">
@@ -303,7 +303,7 @@ export default async function Home() {
         </div>
 
         <div className="grid gap-5">
-          <div className="section-card p-7 sm:p-8">
+          <div className="section-card p-5 sm:p-8">
             <p className="eyebrow">Care journey</p>
             <div className="mt-5 grid gap-5 sm:grid-cols-3">
               {[
@@ -341,7 +341,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="section-card p-7 sm:p-8">
+          <div className="section-card p-5 sm:p-8">
             <p className="eyebrow">Clinicians and therapists</p>
             <div className="mt-5 grid gap-4 sm:grid-cols-3">
               {team.map((member) => (
@@ -349,7 +349,7 @@ export default async function Home() {
                   key={member.slug}
                   className="rounded-[1.4rem] border border-[var(--line)] bg-white/65 p-5"
                 >
-                  <div className="image-frame relative mb-4 min-h-[180px]">
+                  <div className="image-frame relative mb-4 min-h-[160px] sm:min-h-[180px]">
                     <Image
                       src={clinicMedia.team[member.slug as keyof typeof clinicMedia.team]}
                       alt={member.name}
@@ -372,11 +372,11 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-4">
             <p className="eyebrow">Patient trust</p>
-            <h2 className="font-display text-5xl leading-none text-[var(--foreground)]">
+            <h2 className="section-title">
               People remember how calmly they were heard, not just what they were prescribed.
             </h2>
             <p className="text-sm leading-7 text-[var(--muted)]">
@@ -400,7 +400,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section className="mx-auto w-full max-w-7xl px-5 py-8 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid gap-5 lg:grid-cols-2">
           {faqEntries.map((item) => (
             <div key={item.question} className="section-card p-6">

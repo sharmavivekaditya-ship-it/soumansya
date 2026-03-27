@@ -13,13 +13,13 @@ export default async function TeamPage() {
   const team = await getTeamMembers();
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 py-14 sm:px-6 lg:px-8 lg:py-18">
+    <main className="page-shell mx-auto w-full max-w-7xl px-5 py-10 sm:px-6 lg:px-8 lg:py-18">
       <section className="space-y-5">
         <p className="eyebrow">Clinical team</p>
-        <h1 className="font-display text-6xl leading-[0.94] tracking-[-0.03em] text-[var(--foreground)]">
+        <h1 className="page-title">
           A consultant-led team with the calm presence and depth patients look for in serious care.
         </h1>
-        <p className="max-w-3xl text-lg leading-8 text-[var(--muted)]">
+        <p className="body-lead max-w-3xl">
           Psychiatry, clinical psychology, counselling psychology, testing, and
           trauma-aware support come together here with one shared standard of care.
         </p>
@@ -29,11 +29,11 @@ export default async function TeamPage() {
         {team.map((member, index) => (
           <div
             key={member.slug}
-            className={`section-card p-7 sm:p-8 ${
+            className={`section-card p-5 sm:p-8 ${
               index === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-[0.82fr_1.18fr] lg:gap-8" : ""
             }`}
           >
-            <div className="image-frame team-portrait relative min-h-[280px]">
+            <div className="image-frame team-portrait relative min-h-[240px] sm:min-h-[280px]">
               <Image
                 src={clinicMedia.team[member.slug as keyof typeof clinicMedia.team]}
                 alt={member.name}
