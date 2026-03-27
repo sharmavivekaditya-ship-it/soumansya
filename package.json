@@ -3,15 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed",
+    "db:bootstrap": "prisma generate && prisma db push && prisma db seed",
+    "db:setup": "npm run db:bootstrap",
+    "predev": "npm run db:setup",
+    "postinstall": "prisma generate",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.2",
     "next": "16.2.1",
+    "prisma": "^6.19.2",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

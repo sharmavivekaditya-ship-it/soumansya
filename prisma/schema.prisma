@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  title          String
+  category       String
+  eyebrow        String
+  summary        String
+  description    String
+  focusAreas     String
+  careIncludes   String
+  bestFor        String
+  seoTitle       String
+  seoDescription String
+  featured       Boolean  @default(false)
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  name        String
+  role        String
+  credentials String
+  bio         String
+  specialties String
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Location {
+  id             Int      @id @default(autoincrement())
+  slug           String   @unique
+  name           String
+  address        String
+  email          String
+  phoneDisplay   String
+  phoneRaw       String
+  hours          String
+  neighbourhoods String
+  mapLink        String
+  sortOrder      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Testimonial {
+  id         Int      @id @default(autoincrement())
+  slug       String   @unique
+  authorLabel String
+  quote      String
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Lead {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  email              String?
+  phone              String
+  inquiryType        String?
+  urgency            String?
+  preferredContact   String?
+  preferredTime      String?
+  serviceInterest    String?
+  locationPreference String?
+  sourcePage         String?
+  referrer           String?
+  consentToContact   Boolean  @default(false)
+  status             String   @default("new")
+  message            String?
+  createdAt          DateTime @default(now())
+}
